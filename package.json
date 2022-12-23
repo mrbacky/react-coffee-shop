@@ -8,8 +8,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --watch",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "cypress:headless": "cypress run",
+    "e2e": "start-server-and-test start http://localhost:3000 cypress",
+    "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless"
   },
   "repository": {
     "type": "git",
@@ -58,6 +60,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "2.7.1",
     "sharp": "^0.31.1",
+    "start-server-and-test": "^1.15.2",
     "typescript": "^4.8.3"
   }
 }
