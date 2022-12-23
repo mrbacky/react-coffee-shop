@@ -62,41 +62,48 @@ function SignIn({ switchToSignUp, formId }: SignInProps) {
     // Redirect false: Does not redirect to an error page, which returns a promise.
     // Pass credential data too for the backend.
     // Result will have an error if there is an error
-    const result = await signIn("credentials", {
-      redirect: false,
-      email: enteredEmail,
-      password: enteredPassword,
-    });
+    // NOTE: OLD
+    // const result = await signIn("credentials", {
+    //   redirect: false,
+    //   email: enteredEmail,
+    //   password: enteredPassword,
+    // });
 
-    if (!result?.error) {
+    // NOTE: NEW - Mock sign in
+
+    const foundUser = localStorage.getItem(enteredEmail);
+
+    if (foundUser) {
       // Successful signIn
 
       // Check if we have any guest cart session.
-      const guestCartSessionStorage =
-        window.localStorage.getItem(CART_STORAGE_NAME);
-      const cart = guestCartSessionStorage
-        ? JSON.parse(guestCartSessionStorage)
-        : null;
-      if (cart && cart.numberOfCartItems > 0) {
-        // If we had a guest cart session then save that session into our server with the signin user.
-        // Send the cart session to our database if we had items during our guest session.
-        dispatch(
-          sendCartData({
-            items: cart.items,
-            numberOfCartItems: cart.numberOfCartItems,
-            totalPrice: cart.totalPrice,
-          })
-        );
-      } else {
-        // Fetch cart session from our server if there is one.
-        dispatch(fetchCartData());
-      }
+      //   const guestCartSessionStorage =
+      //     window.localStorage.getItem(CART_STORAGE_NAME);
+      //   const cart = guestCartSessionStorage
+      //     ? JSON.parse(guestCartSessionStorage)
+      //     : null;
+      //   if (cart && cart.numberOfCartItems > 0) {
+      //     // If we had a guest cart session then save that session into our server with the signin user.
+      //     // Send the cart session to our database if we had items during our guest session.
+      //     dispatch(
+      //       sendCartData({
+      //         items: cart.items,
+      //         numberOfCartItems: cart.numberOfCartItems,
+      //         totalPrice: cart.totalPrice,
+      //       })
+      //     );
+      //   } else {
+      //     // Fetch cart session from our server if there is one.
+      //     dispatch(fetchCartData());
+      //   }
+
       // clear the local storage from our guest session
-      window.localStorage.removeItem(CART_STORAGE_NAME);
+      // window.localStorage.removeItem(CART_STORAGE_NAME);
       // Redirect user to the home page.
       router.replace("/");
+      localStorage.setItem("loggedInUser", enteredEmail);
     } else {
-      setInvalidCredentials(result ? result.error : "Something went wrong...");
+      setInvalidCredentials("Wrong email or password !");
     }
   };
 
