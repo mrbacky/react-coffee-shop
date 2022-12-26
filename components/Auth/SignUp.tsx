@@ -11,24 +11,20 @@ import styles from "./AuthForm.module.css";
  * @returns string result message.
  */
 async function createUser(userInfo: RegisteredUser) {
-  localStorage.setItem(userInfo.email, JSON.stringify(userInfo));
-  console.log("set");
-  // const response = await fetch("/api/auth/signup", {
-  //   method: "POST",
-  //   body: JSON.stringify(userInfo),
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // });
-  // const responseData = await response.json();
+  const response = await fetch("/api/auth/signup", {
+    method: "POST",
+    body: JSON.stringify(userInfo),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const responseData = await response.json();
 
-  // if (!response.ok) {
-  //   // Something went wrong in our server.
-  //   throw new Error(responseData.message || "Something went wrong!");
-  // }
-  return {
-    message: "User created !",
-  };
+  if (!response.ok) {
+    // Something went wrong in our server.
+    throw new Error(responseData.message || "Something went wrong!");
+  }
+  return responseData;
 }
 
 type SingUpProps = {

@@ -56,26 +56,18 @@ export default async function handler(
     // Hash the user's password to store in our server.
     const hashedPassword = await hashPassword(userInfo.password);
 
-    const userInfoSuccess = {
+    // Add the new user and its credentials to our database.
+    const result = await db.collection(process.env.USER_COLLECTION).insertOne({
       email: userInfo.email,
       firstName: userInfo.firstName,
       lastName: userInfo.lastName,
       password: hashedPassword, // DO NOT STORE PLAIN PASSWORDS in database, must be encrypted.
-    };
-    console.log("singup.ts");
-    // localStorage.setItem(userInfo.email, JSON.stringify(userInfoSuccess));
-    // Add the new user and its credentials to our database.
-    // const result = await db.collection(process.env.USER_COLLECTION).insertOne({
-    //   email: userInfo.email,
-    //   firstName: userInfo.firstName,
-    //   lastName: userInfo.lastName,
-    //   password: hashedPassword, // DO NOT STORE PLAIN PASSWORDS in database, must be encrypted.
-    // });
+    });
 
-    // if (!result.acknowledged) {
-    //   res.status(500).json({ message: "Failed to create new user." });
-    //   return;
-    // }
+    if (!result.acknowledged) {
+      res.status(500).json({ message: "Failed to create new user." });
+      return;
+    }
 
     res.status(201).json({ message: "Created new user!" });
   } else {
