@@ -45,31 +45,26 @@ function CartContent({
       user: userData,
       cart: cart,
     };
-
-    // NOTE: OLD - Send the order data form to our server.
-    // try {
-    //   const response = await fetch("/api/order/order", {
-    //     method: "POST",
-    //     body: JSON.stringify(orderData),
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   });
-    //   result = await response.json();
-    //   setDidSubmit(response.ok, result.message, cart);
-    // } catch (error) {
-    //   // Let the user know that their order was not submitted.
-    //   setDidSubmit(false, "Something went wrong...", null);
-    // }
+    // Send the order data form to our server.
+    let result;
+    try {
+      const response = await fetch("/api/order/order", {
+        method: "POST",
+        body: JSON.stringify(orderData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      result = await response.json();
+      setDidSubmit(response.ok, result.message, cart);
+    } catch (error) {
+      // Let the user know that their order was not submitted.
+      setDidSubmit(false, "Something went wrong...", null);
+    }
     // Database is done receiving the order form.
-
-    // NOTE: NEW - Create order
-    // mock OK
-    setDidSubmit(true, "Order created succesfully", cart);
     setIsSubmitting(false);
     dispatch(cartActions.clearCart());
   };
-
   // Order handler when user clicks the checkout button.
   const orderHandler = useCallback(() => {
     setIsCheckout(true);
