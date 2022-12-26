@@ -1,4 +1,3 @@
-export {};
 /// <reference types="cypress" />
 // ***********************************************
 // This example commands.ts shows you how to
@@ -36,3 +35,5 @@ export {};
 //     }
 //   }
 // }
+
+export {}

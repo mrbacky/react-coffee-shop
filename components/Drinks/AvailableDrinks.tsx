@@ -9,16 +9,47 @@ import type Drink from "../../models/Drink";
 import styles from "./AvailableDrinks.module.css";
 // Dynamic import
 const DrinkItemList = dynamic(() => import("./DrinkItem/DrinkItemList"));
-import drinks from "../../drinksData/drinks.json";
 
 function AvailableDrinks() {
-  const drinkArray: Drink[] = drinks;
+  const drinkArray: Drink[] = [];
+  const { items, isLoading, isError } = FetchItems(
+    "/api/menu/drinks",
+    drinkArray,
+    {
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+    }
+  );
+
+  if (isError) {
+    // Display server error if we had an error connecting to our server.
+    return (
+      <section className={styles.drinksError}>
+        <Card>
+          <h3>{isError.message}</h3>
+        </Card>
+      </section>
+    );
+  }
+  if (isLoading) {
+    // Display loading content since we do not have our data yet.
+    return (
+      <section className={styles.drinksLoading}>
+        <Card>
+          <p>Loading...</p>
+          <LoadingSpinner />
+        </Card>
+      </section>
+    );
+  }
+  // Display the list of drinks.
   return (
     <section className={styles.drinks}>
       <Card>
-        {drinkArray ? (
+        {items ? (
           <Suspense fallback={<LoadingSpinner />}>
-            <DrinkItemList drinks={drinkArray} />
+            <DrinkItemList drinks={items} />
           </Suspense>
         ) : (
           <section className={styles.drinksError}>
