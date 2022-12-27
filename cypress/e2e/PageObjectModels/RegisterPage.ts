@@ -19,3 +19,5 @@ class RegisterPage {
         return cy.get('//*[@id="sign-up"]/div[5]/button[1]')
     }
 }
+
+export {}

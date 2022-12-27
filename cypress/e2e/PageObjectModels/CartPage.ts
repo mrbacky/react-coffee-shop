@@ -51,3 +51,4 @@ class CartPage {
         return cy.get('/html/body/div[2]/div[2]/div/form').contains('Confirm')
     }
 }
+export {}

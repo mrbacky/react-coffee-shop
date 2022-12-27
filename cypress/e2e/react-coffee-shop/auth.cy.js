@@ -2,7 +2,7 @@ import { Chance } from "chance";
 
 describe('User authentication', () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000/auth");
+    cy.visit("/auth");
   });
   const loginPage = new LoginPage()
   const registerPage = new RegisterPage()

@@ -15,3 +15,5 @@ class LoginPage {
         return cy.get('//*[@id="sign-in"]/div[3]/button[2]')
     }
 }
+
+export {}

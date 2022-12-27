@@ -15,3 +15,5 @@ class MenuPage {
         return cy.get('/html/body/div[3]/main/section/div/ul/li[1]/div[3]/form/button')
     }
 }
+
+export {}

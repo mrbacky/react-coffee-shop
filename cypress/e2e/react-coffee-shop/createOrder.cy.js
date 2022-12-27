@@ -6,11 +6,10 @@ describe("Create order", () => {
   const chance = new Chance();
 
   beforeEach(() => {
-    cy.visit("http://localhost:3000");
+    cy.visit("/menu");
   });
 
   it("Creates a new order as a guest", () => {
-    cy.contains("Menu").click();
     cy.contains("Add").click();
     cy.contains("Add").click();
     cy.contains("Your Cart").click();
@@ -25,7 +24,6 @@ describe("Create order", () => {
 
   it("Creates user during order creation and creates order", () => {
     // pick items
-    cy.contains("Menu").click();
     cy.contains("Add").click();
     cy.contains("Add").click();
     cy.contains("Your Cart").click();
