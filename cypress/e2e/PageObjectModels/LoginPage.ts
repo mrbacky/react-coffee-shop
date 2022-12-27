@@ -16,4 +16,4 @@ class LoginPage {
     }
 }
 
-export {}
+export default LoginPage

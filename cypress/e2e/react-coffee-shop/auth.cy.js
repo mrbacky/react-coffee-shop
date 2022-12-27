@@ -1,4 +1,6 @@
 import { Chance } from "chance";
+import LoginPage from "../PageObjectModels/LoginPage";
+import RegisterPage from "../PageObjectModels/RegisterPage";
 
 describe('User authentication', () => {
   beforeEach(() => {
