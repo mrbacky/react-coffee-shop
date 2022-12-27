@@ -4,4 +4,4 @@ class Navbar {
     }
 }
 
-export {}
+export default Navbar

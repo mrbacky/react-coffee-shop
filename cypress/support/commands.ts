@@ -36,4 +36,17 @@
 //   }
 // }
 
+
+Cypress.Commands.add('resetDb', () => {
+    // clean DB
+})
+
+declare global {
+  namespace Cypress {
+    interface Chainable<Subject = any> {
+        resetDb(): Chainable
+    }
+  }
+}
+
 export {}

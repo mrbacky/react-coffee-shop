@@ -20,4 +20,4 @@ class RegisterPage {
     }
 }
 
-export {}
+export default RegisterPage
