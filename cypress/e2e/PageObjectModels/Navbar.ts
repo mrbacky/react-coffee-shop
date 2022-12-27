@@ -1,6 +1,6 @@
 class Navbar {
     getLogOutButton(){
-        return cy.get('//*[@id="__next"]/header/nav/ul/li[4]/a')
+        return cy.xpath('//*[@id="__next"]/header/nav/ul/li[4]/a')
     }
 }
 

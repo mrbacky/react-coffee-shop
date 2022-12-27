@@ -16,7 +16,7 @@ class RegisterPage {
     }
 
     getCreateAccountButton(){
-        return cy.get('//*[@id="sign-up"]/div[5]/button[1]')
+        return cy.xpath('//*[@id="sign-up"]/div[5]/button[1]')
     }
 }
 
