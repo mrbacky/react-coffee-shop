@@ -1,6 +1,4 @@
 /// <reference types="cypress" />
-
-
 import { Given, Then, And, When } from 'cypress-cucumber-preprocessor/steps'
 import LoginPage from '../../PageObjectModels/LoginPage';
 import Navbar from "../../PageObjectModels/Navbar"
@@ -15,7 +13,7 @@ Given('An user opens login page', () => {
 
 When('the user fills in login form', () => {
     loginPage.getEmailInput().type('mr.backy@gmail.com')
-    loginPage.getPasswordInput.type('1234567')
+    loginPage.getPasswordInput().type('1234567')
 })
 
 And('submits login form', () => {
