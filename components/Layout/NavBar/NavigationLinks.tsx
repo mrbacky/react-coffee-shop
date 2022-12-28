@@ -37,7 +37,7 @@ function UserLinks({ authStatus, currentPath, onSignOut }: UserLinksProps) {
     // Displays Sign In in NavBar
     return (
       <li className={getLinkStyle(currentPath, "/auth")}>
-        <Link href="/auth">Sign in</Link>
+        <Link id="sign-in-button" href="/auth">Sign in</Link>
       </li>
     );
   }

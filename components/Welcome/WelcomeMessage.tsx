@@ -13,7 +13,7 @@ function WelcomeMessage() {
 
   return (
     <section className={styles.message}>
-      <h2>{`Welcome ${userGreetingMsg}to React Coffee!`}</h2>
+      <h2 id="welcome-message">{`Welcome ${userGreetingMsg}to React Coffee!`}</h2>
       <p>
         <Link href="/menu" passHref>
           <a>Order fresh coffee to go now!</a>
