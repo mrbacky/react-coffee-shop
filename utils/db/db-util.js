@@ -139,6 +139,13 @@ async function checkIfUserExists(email) {
   return existingUser !== null;
 }
 
+async function clearCollection(collectionName){
+  const client = await connectToDatabase();
+  const collection = client.db().collection(collectionName);
+
+  await collection.deleteMany({});
+}
+
 module.exports = {
   connectToDatabase,
   getOneDocumentFromUser,
@@ -148,4 +155,5 @@ module.exports = {
   insertADocument,
   insertAndReplaceDocument,
   checkIfUserExists,
+  clearCollection,
 };
