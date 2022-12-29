@@ -38,7 +38,8 @@
 
 
 Cypress.Commands.add('resetDb', () => {
-    // clean DB
+    // call endpoint to clean db before testing
+    cy.request('POST', '/api/db/db')
 })
 
 declare global {

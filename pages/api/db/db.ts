@@ -13,6 +13,6 @@ export default async function handler(
             await clearCollection(process.env.ORDER_COLLECTION)
             await clearCollection(process.env.CART_COLLECTION)
 
-            res.status(200)
+            res.status(200).json({})
     }
 }
