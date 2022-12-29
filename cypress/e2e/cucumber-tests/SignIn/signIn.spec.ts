@@ -6,19 +6,24 @@ import { Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
 const navbar = new Navbar();
 const loginPage = new LoginPage();
 
-Given("An user opens login page", () => {
+Given(`An user opens login page clicks on Sign in button in navbar`, () => {
   cy.visit("/");
   navbar.getSignInButton().click();
 });
 
-When("the user fills in and submits login form", () => {
-  loginPage.getEmailInput().type("mr.backy@gmail.com");
-  loginPage.getPasswordInput().type("1234567");
-  loginPage.getLogInButton().click();
-});
-
-Then("the user should see homepage with his first name and last name", () => {
-  cy.get("#welcome-message")
-    .contains("Welcome back Radoslav Backovsky, to React Coffee!")
-    .should("be.visible");
-});
+When(
+  `the user fills in {string} in email field and {string} in password field and hits Sign In button`,
+  (emailInput: string, passwordInput: string) => {
+    loginPage.getEmailInput().type(emailInput);
+    loginPage.getPasswordInput().type(passwordInput);
+    loginPage.getLogInButton().click();
+  }
+);
+Then(
+  `the user should be logged in and see homepage greeting with his first name as {string} and last name as {string}`,
+  (firstName: string, lastName: string) => {
+    cy.get("#welcome-message")
+      .contains(`Welcome back ${firstName} ${lastName}, to React Coffee!`)
+      .should("be.visible");
+  }
+);
