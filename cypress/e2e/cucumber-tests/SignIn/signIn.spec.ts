@@ -7,8 +7,8 @@ const navbar = new Navbar();
 const loginPage = new LoginPage();
 
 Given("An user opens login page", () => {
-  cy.visit("/auth");
-  //   navbar.getSignInButton().click();
+  cy.visit("/");
+  navbar.getSignInButton().click();
 });
 
 When("the user fills in and submits login form", () => {

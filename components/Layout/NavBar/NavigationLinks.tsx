@@ -36,10 +36,11 @@ function UserLinks({ authStatus, currentPath, onSignOut }: UserLinksProps) {
   } else if (authStatus === "unauthenticated") {
     // Displays Sign In in NavBar
     return (
-      <li className={getLinkStyle(currentPath, "/auth")}>
-        <Link id="sign-in-navbar" href="/auth">
-          Sign in
-        </Link>
+      <li
+        id="sign-in-navbar-button"
+        className={getLinkStyle(currentPath, "/auth")}
+      >
+        <Link href="/auth">Sign in</Link>
       </li>
     );
   }

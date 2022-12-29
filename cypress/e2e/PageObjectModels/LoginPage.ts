@@ -8,9 +8,7 @@ class LoginPage {
   }
 
   getLogInButton() {
-    return cy.xpath(
-      "/html/body/div[3]/main/div[2]/div/div/form/div[3]/button[1]"
-    );
+    return cy.get("#sign-in-confirm-button");
   }
 
   getCreateNewAccountButton() {

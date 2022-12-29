@@ -4,7 +4,7 @@ class Navbar {
   }
 
   getSignInButton() {
-    return cy.get("#sign-in-button");
+    return cy.get("#sign-in-navbar-button");
   }
 }
 

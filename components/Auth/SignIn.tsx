@@ -141,7 +141,9 @@ function SignIn({ switchToSignUp, formId }: SignInProps) {
         </div>
         <div className={styles.actions}>
           {/* id="sign-in-button" */}
-          <button className={styles.submitButton}>Sign In</button>
+          <button id="sign-in-confirm-button" className={styles.submitButton}>
+            Sign In
+          </button>
           <button
             type="button"
             className={styles.toggle}
