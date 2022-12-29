@@ -20,10 +20,9 @@ When(
   }
 );
 Then(
-  `the user should be logged in and see homepage greeting with his first name as {string} and last name as {string}`,
-  (firstName: string, lastName: string) => {
-    cy.get("#welcome-message")
-      .contains(`Welcome back ${firstName} ${lastName}, to React Coffee!`)
-      .should("be.visible");
+  `the user should be logged in and see {string} and {string} options in navigation bar`,
+  (accountNavButton: string, SignOutNavButton: string) => {
+    cy.contains(accountNavButton).should("be.visible");
+    cy.contains(SignOutNavButton).should("be.visible");
   }
 );
