@@ -12,7 +12,7 @@ class LoginPage {
   }
 
   getCreateNewAccountButton() {
-    return cy.xpath('//*[@id="sign-in"]/div[3]/button[2]');
+    return cy.get("#create-a-new-account-button");
   }
 }
 

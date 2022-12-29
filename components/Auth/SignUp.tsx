@@ -161,7 +161,11 @@ function SignUp({ switchToSignIn, formId }: SingUpProps) {
           />
         </div>
         <div className={styles.actions}>
-          <button className={styles.submitButton} type="submit">
+          <button
+            id="create-new-account-confirm-button"
+            className={styles.submitButton}
+            type="submit"
+          >
             Create Account
           </button>
           <button

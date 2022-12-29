@@ -140,11 +140,11 @@ function SignIn({ switchToSignUp, formId }: SignInProps) {
           {!formInputIsValid.password && <p>Please enter your password</p>}
         </div>
         <div className={styles.actions}>
-          {/* id="sign-in-button" */}
           <button id="sign-in-confirm-button" className={styles.submitButton}>
             Sign In
           </button>
           <button
+            id="create-a-new-account-button"
             type="button"
             className={styles.toggle}
             onClick={switchToSignUpHandler}
