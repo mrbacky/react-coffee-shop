@@ -1,19 +1,25 @@
 class MenuPage {
-    getProduct(name: string){
-        return cy.xpath('/html/body/div[3]/main/section/div/ul').contains('li', name)
-    }
+  getProduct(name: string) {
+    return cy
+      .xpath("/html/body/div[3]/main/section/div/ul")
+      .contains("li", name);
+  }
 
-    getFirstProduct(){
-        return cy.xpath('/html/body/div[3]/main/section/div/ul').find('li').eq(0)
-    }
+  getFirstProduct() {
+    return cy.contains("+ Add");
+  }
 
-    getFirstProductAmountSelect(){
-        return cy.xpath('/html/body/div[3]/main/section/div/ul/li[1]/div[3]/form/div/select')
-    }
+  getFirstProductAmountSelect() {
+    return cy.xpath(
+      "/html/body/div[3]/main/section/div/ul/li[1]/div[3]/form/div/select"
+    );
+  }
 
-    getFirstProductAddButton(){
-        return cy.xpath('/html/body/div[3]/main/section/div/ul/li[1]/div[3]/form/button')
-    }
+  getFirstProductAddButton() {
+    return cy.xpath(
+      "/html/body/div[3]/main/section/div/ul/li[1]/div[3]/form/button"
+    );
+  }
 }
 
-export default MenuPage
+export default MenuPage;

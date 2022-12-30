@@ -1,4 +1,3 @@
-/// <reference types="cypress" />
 import LoginPage from "../../PageObjectModels/LoginPage";
 import Navbar from "../../PageObjectModels/Navbar";
 import { Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";

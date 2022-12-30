@@ -1,7 +1,7 @@
 Feature: Sign in
 
     As a valid user
-    I want to sign in into website
+    I want to sign into website
 
     Scenario: Valid Sign in
         Given An user opens login page clicks on Sign in button in navbar

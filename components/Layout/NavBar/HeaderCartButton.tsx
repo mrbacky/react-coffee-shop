@@ -61,7 +61,7 @@ function HeaderCartButton({ onSignIn }: HeaderCartButtonProps) {
   return (
     <>
       <m.button
-        id="cartButton"
+        id="cart-navbar-button"
         className={styles.button}
         onClick={showCartHandler}
         animate={animateButton}
@@ -70,7 +70,9 @@ function HeaderCartButton({ onSignIn }: HeaderCartButtonProps) {
           <CartIcon />
         </span>
         <span>Your Cart</span>
-        <span className={styles.badge}>{cart.numberOfCartItems}</span>
+        <span id="cart-navbar-count" className={styles.badge}>
+          {cart.numberOfCartItems}
+        </span>
       </m.button>
       <Suspense fallback={<LoadingSpinner />}>
         <CartModal

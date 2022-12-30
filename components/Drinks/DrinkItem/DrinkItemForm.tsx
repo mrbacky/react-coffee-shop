@@ -49,7 +49,9 @@ function DrinkItemForm({ onAddToCart, name }: DrinkItemFormProps) {
           {getNumberOptions()}
         </select>
       </div>
-      <button type="submit">+ Add</button>
+      <button id="add-button" type="submit">
+        + Add
+      </button>
     </form>
   );
 }
