@@ -15,10 +15,10 @@ Given(`An user is on menu page`, () => {
   cy.visit("/menu");
 });
 
-When("the user adds product to cart and opens cart", () => {
+When("the user adds product to cart", () => {
   menuPage.getFirstProduct().click();
 });
 
 Then("the user should see added product in cart", () => {
-  navbar.getCartCount().contains("1");
+  navbar.getCartCount().contains("1").should("be.visible");
 });
