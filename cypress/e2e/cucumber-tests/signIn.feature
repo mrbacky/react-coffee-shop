@@ -14,3 +14,12 @@ Feature: Sign in
     Scenario: Failing sign in - wrong password
         When the user fills in "mr.backy@gmail.com" in email field and "11111111" in password field and hits Sign In button
         Then the user sign in should be rejected and user should see message "Incorrect password. Please try again."
+
+    Scenario: An User forgets to input password
+        When the user fills in "mr.backy@gmail.com" in email field, forgets to input password and submits form
+        Then the user should see message "Please enter your password"
+
+    Scenario: An User forgets to input email
+        When the user fills in "1234567" in password field, forgets to input email and submits form
+        Then the user should see message "Please enter your email"
+

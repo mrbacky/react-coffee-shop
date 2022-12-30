@@ -15,6 +15,22 @@ Given(
 );
 
 When(
+  "the user fills in {string} in email field, forgets to input password and submits form",
+  (emailInput: string) => {
+    loginPage.getEmailInput().type(emailInput);
+    loginPage.getLogInButton().click();
+  }
+);
+
+When(
+  "the user fills in {string} in password field, forgets to input email and submits form",
+  (passwordInput: string) => {
+    loginPage.getPasswordInput().type(passwordInput);
+    loginPage.getLogInButton().click();
+  }
+);
+
+When(
   "the user fills in {string} in email field and {string} in password field and hits Sign In button",
   (emailInput: string, passwordInput: string) => {
     loginPage.getEmailInput().type(emailInput);
@@ -22,6 +38,10 @@ When(
     loginPage.getLogInButton().click();
   }
 );
+
+Then("the user should see message {string}", (message: string) => {
+  cy.contains(message).should("be.visible");
+});
 
 Then(
   "the user sign in should be rejected and user should see message {string}",
