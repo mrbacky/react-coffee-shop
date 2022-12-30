@@ -6,19 +6,30 @@ import { Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
 const navbar = new Navbar();
 const loginPage = new LoginPage();
 
-Given(`An user opens login page clicks on Sign in button in navbar`, () => {
-  cy.visit("/");
-  navbar.getSignInButton().click();
-});
+Given(
+  `An user opens login page by clicking on Sign in button in navbar`,
+  () => {
+    cy.visit("/");
+    navbar.getSignInButton().click();
+  }
+);
 
 When(
-  `the user fills in {string} in email field and {string} in password field and hits Sign In button`,
+  "the user fills in {string} in email field and {string} in password field and hits Sign In button",
   (emailInput: string, passwordInput: string) => {
     loginPage.getEmailInput().type(emailInput);
     loginPage.getPasswordInput().type(passwordInput);
     loginPage.getLogInButton().click();
   }
 );
+
+Then(
+  "the user sign in should be rejected and user should see message {string}",
+  (message: string) => {
+    cy.contains(message).should("be.visible");
+  }
+);
+
 Then(
   `the user should be logged in and see {string} and {string} options in navigation bar`,
   (accountNavButton: string, SignOutNavButton: string) => {
