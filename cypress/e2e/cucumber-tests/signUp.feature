@@ -1,5 +1,5 @@
 Feature: Sign up
-    
+
     As an user I want to create an account
 
     Scenario: An user creates new account
