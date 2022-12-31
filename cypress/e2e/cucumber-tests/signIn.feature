@@ -21,7 +21,7 @@ Feature: Sign in
     Scenario: An User forgets to input password
         When I fill in "mr.backy@gmail.com" in email field and forget to input password
         And I click Sign In button
-        Then the user should see message "Please enter your password"
+        Then I should see "Please enter your password" message
 
     Scenario: An User forgets to input email
         When I fill in "1234567" in password field and I forget to input email

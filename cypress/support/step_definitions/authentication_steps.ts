@@ -57,10 +57,6 @@ When("I fill in my details and submit", () => {
 });
 
 // SECTION: Assertions
-Then("the user should see message {string}", (message: string) => {
-  cy.contains(message).should("be.visible");
-});
-
 Then("I should be rejected and see message {string}", (message: string) => {
   cy.contains(message).should("be.visible");
 });
