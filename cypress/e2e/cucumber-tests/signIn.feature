@@ -1,7 +1,7 @@
 Feature: Sign in
 
     Background:
-        Given An user opens login page by clicking on Sign in button in navbar
+        Given I am on "auth" page
 
     Scenario: Valid Sign in
         When the user fills in "mr.backy@gmail.com" in email field and "1234567" in password field and hits Sign In button

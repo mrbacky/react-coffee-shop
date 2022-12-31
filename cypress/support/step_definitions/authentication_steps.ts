@@ -16,14 +16,6 @@ const registerPage = new RegisterPage();
 const navbar = new Navbar();
 const loginPage = new LoginPage();
 
-Given(
-  `An user opens login page by clicking on Sign in button in navbar`,
-  () => {
-    cy.visit("/");
-    navbar.getSignInButton().click();
-  }
-);
-
 When(
   "the user fills in {string} in email field, forgets to input password and submits form",
   (emailInput: string) => {
@@ -80,7 +72,7 @@ Given(
   }
 );
 
-When("the user fills in and submits login form", () => {
+When("I fill in my details and submit", () => {
   registerPage.getFirstNameField().type(FIRST_NAME_INPUT);
   registerPage.getLastNameField().type(LAST_NAME_INPUT);
   registerPage.getEmailField().type(EMAIL_INPUT);
@@ -88,6 +80,6 @@ When("the user fills in and submits login form", () => {
   registerPage.getCreateAccountButton().click();
 });
 
-Then("the user should see {string}", (createdNewUserText: string) => {
+Then("the user should see {string} message", (createdNewUserText: string) => {
   cy.contains(createdNewUserText).should("be.visible");
 });
