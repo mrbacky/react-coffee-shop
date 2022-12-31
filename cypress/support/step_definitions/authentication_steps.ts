@@ -16,61 +16,37 @@ const registerPage = new RegisterPage();
 const navbar = new Navbar();
 const loginPage = new LoginPage();
 
+// SECTION: Actions
 When(
-  "the user fills in {string} in email field, forgets to input password and submits form",
+  "I fill in {string} in email field and forget to input password",
   (emailInput: string) => {
     loginPage.getEmailInput().type(emailInput);
-    loginPage.getLogInButton().click();
   }
 );
 
 When(
-  "the user fills in {string} in password field, forgets to input email and submits form",
-  (passwordInput: string) => {
-    loginPage.getPasswordInput().type(passwordInput);
-    loginPage.getLogInButton().click();
-  }
-);
-
-When(
-  "the user fills in {string} in email field and {string} in password field and hits Sign In button",
+  "I fill in {string} in email field and {string} in password field",
   (emailInput: string, passwordInput: string) => {
     loginPage.getEmailInput().type(emailInput);
     loginPage.getPasswordInput().type(passwordInput);
-    loginPage.getLogInButton().click();
   }
 );
 
-Then("the user should see message {string}", (message: string) => {
-  cy.contains(message).should("be.visible");
+When(
+  "I fill in {string} in password field and I forget to input email",
+  (passwordInput: string) => {
+    loginPage.getPasswordInput().type(passwordInput);
+    loginPage.getEmailInput().should("be.empty");
+  }
+);
+
+When("I click Sign In button", () => {
+  loginPage.getLogInButton().click();
 });
 
-Then(
-  "the user sign in should be rejected and user should see message {string}",
-  (message: string) => {
-    cy.contains(message).should("be.visible");
-  }
-);
-
-Then(
-  `the user should be logged in and see {string} and {string} options in navigation bar`,
-  (accountNavButton: string, SignOutNavButton: string) => {
-    cy.contains(accountNavButton).should("be.visible");
-    cy.contains(SignOutNavButton).should("be.visible");
-  }
-);
-
-Given(
-  "An user opens home page, hits 'Sign in' button in nav bar and hits 'Create a new account' button",
-  () => {
-    cy.visit("/");
-    navbar.getSignInButton().click();
-    loginPage
-      .getCreateNewAccountButton()
-      .contains("Create a new account")
-      .click();
-  }
-);
+When("I click on Create a new account button", () => {
+  loginPage.getCreateNewAccountButton().click();
+});
 
 When("I fill in my details and submit", () => {
   registerPage.getFirstNameField().type(FIRST_NAME_INPUT);
@@ -80,6 +56,23 @@ When("I fill in my details and submit", () => {
   registerPage.getCreateAccountButton().click();
 });
 
-Then("the user should see {string} message", (createdNewUserText: string) => {
-  cy.contains(createdNewUserText).should("be.visible");
+// SECTION: Assertions
+Then("the user should see message {string}", (message: string) => {
+  cy.contains(message).should("be.visible");
+});
+
+Then("I should be rejected and see message {string}", (message: string) => {
+  cy.contains(message).should("be.visible");
+});
+
+Then(
+  `I should be logged in and see {string} and {string} options in navigation bar`,
+  (accountNavButton: string, SignOutNavButton: string) => {
+    cy.contains(accountNavButton).should("be.visible");
+    cy.contains(SignOutNavButton).should("be.visible");
+  }
+);
+
+Then("I should see {string} message", (message: string) => {
+  cy.contains(message).should("be.visible");
 });

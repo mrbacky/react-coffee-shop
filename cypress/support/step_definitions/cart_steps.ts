@@ -7,9 +7,7 @@ import CartPage from "../../e2e/PageObjectModels/CartPage";
 import MenuPage from "../../e2e/PageObjectModels/MenuPage";
 
 const menuPage = new MenuPage();
-const cartPage = new CartPage();
 const navbar = new Navbar();
-const loginPage = new LoginPage();
 
 When("I add product to cart", () => {
   menuPage.getFirstProduct().click();

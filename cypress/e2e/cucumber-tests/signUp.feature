@@ -4,6 +4,6 @@ Feature: Sign up
 
     Scenario: An user creates new account
         Given I am on "auth" page
-        When I click on "Create a new account" button
+        When I click on Create a new account button
         And I fill in my details and submit
-        Then the user should see "Created new user!" message
+        Then I should see "Created new user!" message
