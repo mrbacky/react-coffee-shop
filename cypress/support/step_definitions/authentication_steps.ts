@@ -2,8 +2,9 @@
 import LoginPage from "../../e2e/PageObjectModels/LoginPage";
 import RegisterPage from "../../e2e/PageObjectModels/RegisterPage";
 import Navbar from "../../e2e/PageObjectModels/Navbar";
-import { Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
+import { Then, When } from "@badeball/cypress-cucumber-preprocessor";
 import Chance from "chance";
+import { Before } from "@badeball/cypress-cucumber-preprocessor/lib/methods";
 
 const chance = new Chance();
 
@@ -17,6 +18,13 @@ const navbar = new Navbar();
 const loginPage = new LoginPage();
 
 // SECTION: Actions
+Before(() => {
+  console.log("clear db");
+  cy.request("POST", "/api/db/db");
+  console.log("init db");
+  // TODO: init db request
+});
+
 When(
   "I fill in {string} in email field and forget to input password",
   (emailInput: string) => {
