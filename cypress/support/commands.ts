@@ -37,15 +37,27 @@
 // }
 
 
+import LoginPage from "../e2e/PageObjectModels/LoginPage";
+
 Cypress.Commands.add('resetDb', () => {
     // call endpoint to clean db before testing
     cy.request('POST', '/api/db/db')
 })
 
+Cypress.Commands.add('logIn', (email, password) => {
+    const loginPage = new LoginPage();
+
+    cy.visit("/auth");
+    loginPage.getEmailInput().type(email);
+    loginPage.getPasswordInput().type(password);
+    loginPage.getLogInButton().click();
+})
+
 declare global {
   namespace Cypress {
     interface Chainable<Subject = any> {
-        resetDb(): Chainable
+        resetDb(): Chainable,
+        logIn(email: string, password: string): Chainable
     }
   }
 }
