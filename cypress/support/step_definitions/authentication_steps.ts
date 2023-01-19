@@ -1,28 +1,23 @@
 /// <reference types="cypress" />
 import LoginPage from "../../e2e/PageObjectModels/LoginPage";
 import RegisterPage from "../../e2e/PageObjectModels/RegisterPage";
-import Navbar from "../../e2e/PageObjectModels/Navbar";
 import { Then, When } from "@badeball/cypress-cucumber-preprocessor";
-import Chance from "chance";
 import { Before } from "@badeball/cypress-cucumber-preprocessor/lib/methods";
 
-const chance = new Chance();
-
-const EMAIL_INPUT = chance.email();
-const FIRST_NAME_INPUT = chance.first();
-const LAST_NAME_INPUT = chance.last();
-const PASSWORD_INPUT = "1234567";
-
 const registerPage = new RegisterPage();
-const navbar = new Navbar();
 const loginPage = new LoginPage();
+let user: any;
 
 // SECTION: Actions
 Before(() => {
-  console.log("clear db");
-  cy.request("POST", "/api/db/db");
-  console.log("init db");
-  // TODO: init db request
+    // cy.resetDb();
+    cy.request('POST', '/api/db/db')
+    //cy.seedDb();
+    cy.request('POST', '/api/db/seed')
+
+    cy.fixture('user').then(function (data) {
+        user = data;
+    })
 });
 
 When(
@@ -57,10 +52,10 @@ When("I click on Create a new account button", () => {
 });
 
 When("I fill in my details and submit", () => {
-  registerPage.getFirstNameField().type(FIRST_NAME_INPUT);
-  registerPage.getLastNameField().type(LAST_NAME_INPUT);
-  registerPage.getEmailField().type(EMAIL_INPUT);
-  registerPage.getPasswordField().type(PASSWORD_INPUT);
+  registerPage.getFirstNameField().type(user.firstName);
+  registerPage.getLastNameField().type(user.lastName);
+  registerPage.getEmailField().type(user.email);
+  registerPage.getPasswordField().type(user.password);
   registerPage.getCreateAccountButton().click();
 });
 

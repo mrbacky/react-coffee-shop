@@ -44,6 +44,11 @@ Cypress.Commands.add('resetDb', () => {
     cy.request('POST', '/api/db/db')
 })
 
+Cypress.Commands.add('seedDb', () => {
+    // call endpoint to clean db before testing
+    cy.request('POST', '/api/db/seed')
+})
+
 Cypress.Commands.add('logIn', (email, password) => {
     const loginPage = new LoginPage();
 
@@ -57,6 +62,7 @@ declare global {
   namespace Cypress {
     interface Chainable<Subject = any> {
         resetDb(): Chainable,
+        seedDb(): Chainable,
         logIn(email: string, password: string): Chainable
     }
   }
