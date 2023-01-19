@@ -10,14 +10,14 @@ let user: any;
 
 // SECTION: Actions
 Before(() => {
-    // cy.resetDb();
-    cy.request('POST', '/api/db/db')
-    //cy.seedDb();
-    cy.request('POST', '/api/db/seed')
+  // cy.resetDb();
+  cy.request("POST", "/api/db/db");
+  //cy.seedDb();
+  cy.request("POST", "/api/db/seed");
 
-    cy.fixture('user').then(function (data) {
-        user = data;
-    })
+  cy.fixture("signUpAccount").then(function (data) {
+    user = data;
+  });
 });
 
 When(
