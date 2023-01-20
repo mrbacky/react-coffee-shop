@@ -8,18 +8,16 @@ const registerPage = new RegisterPage();
 const loginPage = new LoginPage();
 let user: any;
 
-// SECTION: Actions
+// SECTION: Reset db, Seed db
 Before(() => {
-  // cy.resetDb();
-  cy.request("POST", "/api/db/db");
-  //cy.seedDb();
-  cy.request("POST", "/api/db/seed");
-
+  cy.resetDb();
+  cy.seedDb();
   cy.fixture("signUpAccount").then(function (data) {
     user = data;
   });
 });
 
+// SECTION: Actions
 When(
   "I fill in {string} in email field and forget to input password",
   (emailInput: string) => {
@@ -71,7 +69,3 @@ Then(
     cy.contains(SignOutNavButton).should("be.visible");
   }
 );
-
-Then("I should see {string} message", (message: string) => {
-  cy.contains(message).should("be.visible");
-});

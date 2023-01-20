@@ -8,7 +8,7 @@ class CartPage {
   }
 
   getOrderButton() {
-    return cy.xpath("/html/body/div[2]/div[2]/div/div[2]/button[3]");
+    return cy.get("#order-button");
   }
 
   getFirstCartItem() {
@@ -34,7 +34,7 @@ class CartPage {
   }
 
   getConfirmContinueAsGuestButton() {
-    return cy.xpath('//*[@id="overlays"]/div[2]/div/div[2]/div/button[1]');
+    return cy.get("#confirm-continue-as-guest-button");
   }
 
   getFirstNameInput() {
@@ -49,8 +49,12 @@ class CartPage {
     return cy.get("#email");
   }
 
-  getConfirmOrderButton() {
-    return cy.xpath("/html/body/div[2]/div[2]/div/form").contains("Confirm");
+  getLoggedInUserConfirmOrderButton() {
+    return cy.get("#logged-in-user-confirm-order-button");
+  }
+
+  getGuestUserConfirmOrderButton() {
+    return cy.get("#guest-confirm-order-button");
   }
 }
 export default CartPage;

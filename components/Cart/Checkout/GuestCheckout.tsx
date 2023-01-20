@@ -105,7 +105,7 @@ function GuestCheckout({ onCancel, onClose, onConfirm }: GuestCheckoutProps) {
         <button className={styles.cancel} type="button" onClick={onCancel}>
           Cancel
         </button>
-        <button className={styles.submit} type="submit">
+        <button id="guest-confirm-order-button" className={styles.submit} type="submit">
           <span>
             <CartCheck />
           </span>

@@ -126,7 +126,11 @@ function CartContent({
           <button className={styles.close} onClick={onClose}>
             Close
           </button>
-          <button className={styles.order} onClick={orderHandler}>
+          <button
+            id="order-button"
+            className={styles.order}
+            onClick={orderHandler}
+          >
             Order
           </button>
         </div>

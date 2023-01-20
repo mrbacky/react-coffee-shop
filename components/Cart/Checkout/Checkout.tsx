@@ -57,7 +57,12 @@ function Checkout({ onToSignIn, onClose, onCancel, onConfirm }: CheckoutProps) {
       <div className={styles.guestPrompt}>
         <h2>Continue as guest?</h2>
         <div className={styles.actions}>
-          <button onClick={handleContinueAsGuest}>Yes</button>
+          <button
+            id="confirm-continue-as-guest-button"
+            onClick={handleContinueAsGuest}
+          >
+            Yes
+          </button>
           <button onClick={onToSignIn}>Sign in/Create Account</button>
         </div>
       </div>

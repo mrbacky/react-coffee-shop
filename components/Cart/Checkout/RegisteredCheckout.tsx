@@ -53,7 +53,11 @@ function RegisteredCheckout({
         <button className={styles.cancel} type="button" onClick={onCancel}>
           Cancel
         </button>
-        <button className={styles.submit} type="submit">
+        <button
+          id="logged-in-user-confirm-order-button"
+          className={styles.submit}
+          type="submit"
+        >
           <span>
             <CartCheck />
           </span>
